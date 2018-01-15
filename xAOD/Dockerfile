@@ -8,7 +8,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     git \
     krb5-user\
     libzmq3-dev \
-    module-init-tools \
     pkg-config \
     python \
     python-dev \
@@ -27,6 +26,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
+#   module-init-tools \
 #   openjdk-8-jdk \
 #   openjdk-8-jre-headless \
 
