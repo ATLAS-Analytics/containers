@@ -1,0 +1,12 @@
+#!/bin/bash
+
+# . /environment
+
+echo $PATH
+
+git clone https://github.com/ATLAS-Analytics/xAOD-analytics.git
+echo "========= all set up. ============"
+
+cd xAOD-analytics/import
+ls
+"$@"

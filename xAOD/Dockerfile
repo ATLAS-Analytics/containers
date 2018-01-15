@@ -1,0 +1,76 @@
+FROM openjdk:7-jre
+
+LABEL maintainer Ilija Vukotic <ivukotic@cern.ch>
+
+RUN export DEBIAN_FRONTEND=noninteractive && \
+    apt-get update && apt-get install -y --allow-unauthenticated \
+    build-essential \
+    git \
+    krb5-user\
+    libzmq3-dev \
+    module-init-tools \
+    pkg-config \
+    python \
+    python-dev \
+    python3 \
+    rsync \
+    software-properties-common \
+    unzip \
+    zip \
+    zlib1g-dev \
+    vim \
+    curl \
+    wget \
+    python-pip \
+    python3-pip \
+    && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+#   openjdk-8-jdk \
+#   openjdk-8-jre-headless \
+
+
+###################################
+## cmake swig python3-tk ffmpeg \
+## xvfb python-opengl \
+###################################
+
+RUN pip install --upgrade pip && \
+    pip3 install --upgrade pip
+
+
+# pig
+
+ENV PIG_VERSION 0.17.0
+RUN curl -LO http://apache.cs.utah.edu/pig/pig-$PIG_VERSION/pig-$PIG_VERSION.tar.gz
+RUN tar xzf pig-$PIG_VERSION.tar.gz
+ENV PATH $PATH:/pig-$PIG_VERSION/bin
+
+# es-pig
+RUN curl -LO http://central.maven.org/maven2/org/elasticsearch/elasticsearch-hadoop-pig/5.6.5/elasticsearch-hadoop-pig-5.6.5.jar
+
+
+# python3
+RUN pip3 --no-cache-dir install \
+    h5py \
+    tables \
+    numpy \
+    pandas \
+    scipy \
+    sklearn \
+    elasticsearch 
+
+# build info
+RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
+
+RUN useradd -ms /bin/bash analyticssvc
+
+USER analyticssvc
+WORKDIR /home/analyticssvc
+
+COPY run run
+RUN chmod 755 run
+
+#execute service
+CMD ["/.run"]
