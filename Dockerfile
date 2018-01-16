@@ -2,69 +2,58 @@ FROM centos:7
 
 LABEL maintainer="Ilija Vukotic <ivukotic@cern.ch>"
 
-RUN yum install -y epel-release.noarch
+RUN yum install -y epel-release.noarch && \
+    yum install -y https://centos7.iuscommunity.org/ius-release.rpm
 
-# Install dependencies for rucio
-RUN yum install -y \
+# Install dependencies
+RUN yum update && yum install -y \
     httpd \
     git \
     curl \
     wget \
-    python3 \
-    krb5-user \
+    rsync \
+    zip \
+    unzip \
+    vim \
     libaio \
+    python-pip \
+    python-devel \
+    python36u \
+    python36u-pip \
+    python36u-devel \
+    ntp \
+    krb5-workstation \
     mod_auth_kerb \
     mod_ssl \
     mod_wsgi \
-    openssl-devel.x86_64 \
-    python-devel.x86_64 \
-    python-pip \
-    vim
+    openssl-devel \
+    java-1.7.0-openjdk \
 
-#   gcc \
-#   gridsite \
+    #   gcc \
+    #   gridsite \
 
-# RUN export DEBIAN_FRONTEND=noninteractive && \
-#     apt-get update && apt-get install -y --allow-unauthenticated \
-#     build-essential \
-#     git \
-#     krb5-user\
-#     libzmq3-dev \
-#     pkg-config \
-#     python \
-#     python-dev \
-#     python3 \
-#     rsync \
-#     software-properties-common \
-#     unzip \
-#     zip \
-#     zlib1g-dev \
-#     vim \
-#     curl \
-#     wget \
-#     python-pip \
-#     python3-pip \
-#     openjdk-7-jdk \
-#     && \
-#     apt-get clean && \
-#     rm -rf /var/lib/apt/lists/*
-
-#   module-init-tools \
-#   openjdk-8-jdk \
-#   openjdk-8-jre-headless \
+    # RUN export DEBIAN_FRONTEND=noninteractive && \
+    #     apt-get update && apt-get install -y --allow-unauthenticated \
+    #     build-essential \
+    #     krb5-user \
+    #     libzmq3-dev \
+    #     pkg-config \
+    #     software-properties-common \
+    #     zlib1g-dev 
+    #   module-init-tools \
+    #   openjdk-8-jdk \
+    #   openjdk-8-jre-headless \
+    # RUN pip install --upgrade pip && \
+    #     pip3 install --upgrade pip
 
 
-# RUN pip install --upgrade pip && \
-#     pip3 install --upgrade pip
+    # pig
 
-
-# # pig
-
-# ENV PIG_VERSION 0.17.0
-# RUN curl -LO http://apache.cs.utah.edu/pig/pig-$PIG_VERSION/pig-$PIG_VERSION.tar.gz && \
-#     tar xzf pig-$PIG_VERSION.tar.gz && \
-#     rm pig-$PIG_VERSION.tar.gz
-# ENV PATH $PATH:/pig-$PIG_VERSION/bin
+    ENV PIG_VERSION 0.17.0
+RUN curl -LO http://apache.cs.utah.edu/pig/pig-$PIG_VERSION/pig-$PIG_VERSION.tar.gz && \
+    tar xzf pig-$PIG_VERSION.tar.gz && \
+    rm pig-$PIG_VERSION.tar.gz
+ENV PATH $PATH:/pig-$PIG_VERSION/bin
 
 # # es-pig - if full es-hadoop integrations is not needed
 # RUN curl -LO http://central.maven.org/maven2/org/elasticsearch/elasticsearch-hadoop-pig/5.6.5/elasticsearch-hadoop-pig-5.6.5.jar
