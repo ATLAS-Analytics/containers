@@ -63,26 +63,37 @@ RUN curl -LO http://download.elastic.co/hadoop/elasticsearch-hadoop-6.1.1.zip
 RUN unzip elasticsearch-hadoop-6.1.1.zip 
 RUN rm elasticsearch-hadoop-6.1.1.zip
 
-# # python3
-# RUN pip3 --no-cache-dir install \
-#     h5py \
-#     tables \
-#     numpy \
-#     pandas \
-#     scipy \
-#     sklearn \
-#     elasticsearch 
+RUN pip install --upgrade pip
+RUN pip install --no-cache-dir \
+    h5py \
+    tables \
+    numpy \
+    pandas \
+    scipy \
+    sklearn \
+    elasticsearch
 
-# # build info
-# RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
+# python3
+RUN pip3.6 install --upgrade pip
+RUN pip3.6 install --no-cache-dir \
+    h5py \
+    tables \
+    numpy \
+    pandas \
+    scipy \
+    sklearn \
+    elasticsearch 
 
-# RUN useradd -ms /bin/bash analyticssvc
+# build info
+RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
 
-# USER analyticssvc
-# WORKDIR /home/analyticssvc
+RUN useradd -ms /bin/bash analyticssvc
 
-# COPY run run
-# RUN chmod 755 run
+USER analyticssvc
+WORKDIR /home/analyticssvc
 
-# #execute service
-# CMD ["run"]
+COPY run run
+RUN chmod 755 run
+
+#execute service
+CMD ["run"]
