@@ -28,41 +28,40 @@ RUN yum install -y \
     mod_ssl \
     mod_wsgi \
     openssl-devel \
-    java-1.7.0-openjdk \
+    java-1.7.0-openjdk 
 
-    #   gcc \
-    #   gridsite \
+#     build-essential \
+#     krb5-user \
+#     libzmq3-dev \
+#     pkg-config \
+#     software-properties-common \
+#     zlib1g-dev 
+#   module-init-tools \
 
-    # RUN export DEBIAN_FRONTEND=noninteractive && \
-    #     apt-get update && apt-get install -y --allow-unauthenticated \
-    #     build-essential \
-    #     krb5-user \
-    #     libzmq3-dev \
-    #     pkg-config \
-    #     software-properties-common \
-    #     zlib1g-dev 
-    #   module-init-tools \
-    #   openjdk-8-jdk \
-    #   openjdk-8-jre-headless \
-    # RUN pip install --upgrade pip && \
-    #     pip3 install --upgrade pip
+#   openjdk-8-jdk \
+#   openjdk-8-jre-headless \
+
+# RUN pip install --upgrade pip && \
+#     pip3 install --upgrade pip
 
 
-    # pig
+# pig
 
-    ENV PIG_VERSION 0.17.0
-RUN curl -LO http://apache.cs.utah.edu/pig/pig-$PIG_VERSION/pig-$PIG_VERSION.tar.gz && \
-    tar xzf pig-$PIG_VERSION.tar.gz && \
-    rm pig-$PIG_VERSION.tar.gz
+ENV JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.161-2.6.12.0.el7_4.x86_64/jre
+
+ENV PIG_VERSION 0.17.0
+RUN curl -LO http://apache.cs.utah.edu/pig/pig-$PIG_VERSION/pig-$PIG_VERSION.tar.gz
+RUN tar xzf pig-$PIG_VERSION.tar.gz
+RUN rm pig-$PIG_VERSION.tar.gz
 ENV PATH $PATH:/pig-$PIG_VERSION/bin
 
-# # es-pig - if full es-hadoop integrations is not needed
-# RUN curl -LO http://central.maven.org/maven2/org/elasticsearch/elasticsearch-hadoop-pig/5.6.5/elasticsearch-hadoop-pig-5.6.5.jar
+# es-pig - if full es-hadoop integrations is not needed
+RUN curl -LO http://central.maven.org/maven2/org/elasticsearch/elasticsearch-hadoop-pig/5.6.5/elasticsearch-hadoop-pig-5.6.5.jar
 
 # # es-hadoop - for all the modules (pig, mr, spark)
-# RUN curl -LO http://download.elastic.co/hadoop/elasticsearch-hadoop-6.1.1.zip && \
-#     unzip elasticsearch-hadoop-6.1.1.zip && \
-#     rm elasticsearch-hadoop-6.1.1.zip
+RUN curl -LO http://download.elastic.co/hadoop/elasticsearch-hadoop-6.1.1.zip 
+RUN unzip elasticsearch-hadoop-6.1.1.zip 
+RUN rm elasticsearch-hadoop-6.1.1.zip
 
 # # python3
 # RUN pip3 --no-cache-dir install \
