@@ -1,6 +1,6 @@
 FROM ubuntu:latest
 
-LABEL maintainer Ilija Vukotic <ivukotic@cern.ch>
+LABEL maintainer="Ilija Vukotic <ivukotic@cern.ch>"
 
 RUN export DEBIAN_FRONTEND=noninteractive && \
     apt-get update && apt-get install -y --allow-unauthenticated \
@@ -39,16 +39,18 @@ RUN pip install --upgrade pip && \
 # pig
 
 ENV PIG_VERSION 0.17.0
-RUN curl -LO http://apache.cs.utah.edu/pig/pig-$PIG_VERSION/pig-$PIG_VERSION.tar.gz
-RUN tar xzf pig-$PIG_VERSION.tar.gz
+RUN curl -LO http://apache.cs.utah.edu/pig/pig-$PIG_VERSION/pig-$PIG_VERSION.tar.gz && \
+    tar xzf pig-$PIG_VERSION.tar.gz && \
+    rm pig-$PIG_VERSION.tar.gz
 ENV PATH $PATH:/pig-$PIG_VERSION/bin
 
 # es-pig - if full es-hadoop integrations is not needed
 RUN curl -LO http://central.maven.org/maven2/org/elasticsearch/elasticsearch-hadoop-pig/5.6.5/elasticsearch-hadoop-pig-5.6.5.jar
 
 # es-hadoop - for all the modules (pig, mr, spark)
-RUN curl -LO http://download.elastic.co/hadoop/elasticsearch-hadoop-6.1.1.zip
-RUN unzip elasticsearch-hadoop-6.1.1.zip
+RUN curl -LO http://download.elastic.co/hadoop/elasticsearch-hadoop-6.1.1.zip && \
+    unzip elasticsearch-hadoop-6.1.1.zip && \
+    rm elasticsearch-hadoop-6.1.1.zip
 
 # python3
 RUN pip3 --no-cache-dir install \
