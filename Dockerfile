@@ -2,11 +2,12 @@ FROM centos:7
 
 LABEL maintainer="Ilija Vukotic <ivukotic@cern.ch>"
 
-RUN yum install -y epel-release.noarch && \
-    yum install -y https://centos7.iuscommunity.org/ius-release.rpm
+RUN yum install -y epel-release.noarch
+RUN yum install -y https://centos7.iuscommunity.org/ius-release.rpm
+RUN yum -y update 
 
 # Install dependencies
-RUN yum update && yum install -y \
+RUN yum install -y \
     httpd \
     git \
     curl \
