@@ -84,6 +84,10 @@ RUN pip3.6 install --no-cache-dir \
     sklearn \
     elasticsearch 
 
+
+COPY run.sh run.sh
+RUN chmod 755 run.sh
+
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
 
@@ -91,9 +95,6 @@ RUN useradd -ms /bin/bash analyticssvc
 
 USER analyticssvc
 WORKDIR /home/analyticssvc
-
-COPY run.sh run.sh
-RUN chmod 755 run.sh
 
 #execute service
 CMD ["run.sh"]
