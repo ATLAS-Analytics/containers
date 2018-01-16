@@ -1,4 +1,4 @@
-FROM openjdk:7-jre
+FROM ubuntu:latest
 
 LABEL maintainer Ilija Vukotic <ivukotic@cern.ch>
 
@@ -22,6 +22,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
     wget \
     python-pip \
     python3-pip \
+    openjdk-7-jdk \
     && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -30,11 +31,6 @@ RUN export DEBIAN_FRONTEND=noninteractive && \
 #   openjdk-8-jdk \
 #   openjdk-8-jre-headless \
 
-
-###################################
-## cmake swig python3-tk ffmpeg \
-## xvfb python-opengl \
-###################################
 
 RUN pip install --upgrade pip && \
     pip3 install --upgrade pip
@@ -76,4 +72,4 @@ COPY run run
 RUN chmod 755 run
 
 #execute service
-CMD ["/.run"]
+CMD ["run"]
