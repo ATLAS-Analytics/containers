@@ -92,8 +92,8 @@ RUN useradd -ms /bin/bash analyticssvc
 USER analyticssvc
 WORKDIR /home/analyticssvc
 
-COPY run run
-RUN chmod 755 run
+COPY run.sh run.sh
+RUN chmod 755 run.sh
 
 #execute service
-CMD ["run"]
+CMD ["run.sh"]
