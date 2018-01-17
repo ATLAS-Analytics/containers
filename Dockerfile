@@ -63,6 +63,12 @@ RUN curl -LO http://download.elastic.co/hadoop/elasticsearch-hadoop-6.1.1.zip
 RUN unzip elasticsearch-hadoop-6.1.1.zip 
 RUN rm elasticsearch-hadoop-6.1.1.zip
 
+# hdfs
+
+RUN wget http://archive.cloudera.com/cdh5/one-click-install/redhat/7/x86_64/cloudera-cdh-5-0.x86_64.rpm
+RUN rpm -ivh cloudera-cdh-5-0.x86_64.rpm
+
+
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir \
     h5py \
@@ -84,6 +90,7 @@ RUN pip3.6 install --no-cache-dir \
     sklearn \
     elasticsearch 
 
+COPY krb5.conf /etc/krb5.conf
 
 COPY run.sh run.sh
 RUN chmod 755 run.sh
@@ -97,4 +104,4 @@ USER analyticssvc
 WORKDIR /home/analyticssvc
 
 #execute service
-CMD ["run.sh"]
+CMD ["/run.sh"]
