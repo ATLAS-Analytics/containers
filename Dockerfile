@@ -77,7 +77,8 @@ RUN pip install --no-cache-dir \
     pandas \
     scipy \
     sklearn \
-    elasticsearch
+    elasticsearch \
+    cx_Oracle
 
 # python3
 RUN pip3.6 install --upgrade pip
@@ -88,7 +89,8 @@ RUN pip3.6 install --no-cache-dir \
     pandas \
     scipy \
     sklearn \
-    elasticsearch 
+    elasticsearch \
+    cx_Oracle
 
 COPY krb5.conf /etc/krb5.conf
 
