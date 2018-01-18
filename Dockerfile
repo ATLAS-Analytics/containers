@@ -55,9 +55,6 @@ ENV JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.161-2.6.12.0.el7_4.x86_64/jr
 # RUN rm pig-$PIG_VERSION.tar.gz
 # ENV PATH $PATH:/pig-$PIG_VERSION/bin
 
-# es-pig - if full es-hadoop integrations is not needed
-RUN curl -LO http://central.maven.org/maven2/org/elasticsearch/elasticsearch-hadoop-pig/5.6.5/elasticsearch-hadoop-pig-5.6.5.jar
-
 # # es-hadoop - for all the modules (pig, mr, spark)
 RUN curl -LO http://download.elastic.co/hadoop/elasticsearch-hadoop-6.1.1.zip 
 RUN unzip elasticsearch-hadoop-6.1.1.zip 
@@ -102,6 +99,9 @@ COPY configs/krb5.conf /etc/krb5.conf
 COPY run.sh run.sh
 RUN chmod 755 run.sh
 
+COPY xAOD/run.sh xAOD/
+RUN chmod 755 xAOD/run.sh
+
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
 
@@ -110,8 +110,6 @@ RUN useradd -ms /bin/bash analyticssvc
 USER analyticssvc
 WORKDIR /home/analyticssvc
 
-COPY xAOD/run.sh xAOD/
-RUN chmod 755 xAOD/run.sh
 
 #execute service
 CMD ["/run.sh"]

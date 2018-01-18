@@ -6,7 +6,7 @@ spec:
   containers:
   - name: analytics-svc-container
     image: atlasanalyticsservice/containers:latest
-    args: ["xAOD/run.sh"]
+    args: ["/xAOD/run.sh"]
     volumeMounts:
     - name: keytab-volume
       mountPath: "/tmp/keytab"
