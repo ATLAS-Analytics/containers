@@ -111,6 +111,7 @@ USER analyticssvc
 WORKDIR /home/analyticssvc
 
 COPY xAOD/run.sh xAOD/
+RUN chmod 755 xAOD/run.sh
 
 #execute service
 CMD ["/run.sh"]
