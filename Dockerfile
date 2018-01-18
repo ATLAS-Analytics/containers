@@ -49,11 +49,11 @@ RUN yum install -y \
 
 ENV JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.161-2.6.12.0.el7_4.x86_64/jre
 
-ENV PIG_VERSION 0.17.0
-RUN curl -LO http://apache.cs.utah.edu/pig/pig-$PIG_VERSION/pig-$PIG_VERSION.tar.gz
-RUN tar xzf pig-$PIG_VERSION.tar.gz
-RUN rm pig-$PIG_VERSION.tar.gz
-ENV PATH $PATH:/pig-$PIG_VERSION/bin
+# ENV PIG_VERSION 0.17.0
+# RUN curl -LO http://apache.cs.utah.edu/pig/pig-$PIG_VERSION/pig-$PIG_VERSION.tar.gz
+# RUN tar xzf pig-$PIG_VERSION.tar.gz
+# RUN rm pig-$PIG_VERSION.tar.gz
+# ENV PATH $PATH:/pig-$PIG_VERSION/bin
 
 # es-pig - if full es-hadoop integrations is not needed
 RUN curl -LO http://central.maven.org/maven2/org/elasticsearch/elasticsearch-hadoop-pig/5.6.5/elasticsearch-hadoop-pig-5.6.5.jar
@@ -64,9 +64,11 @@ RUN unzip elasticsearch-hadoop-6.1.1.zip
 RUN rm elasticsearch-hadoop-6.1.1.zip
 
 # hdfs
-
 RUN wget http://archive.cloudera.com/cdh5/one-click-install/redhat/7/x86_64/cloudera-cdh-5-0.x86_64.rpm
-RUN rpm -ivh cloudera-cdh-5-0.x86_64.rpm
+#RUN rpm -ivh cloudera-cdh-5-0.x86_64.rpm
+RUN yum install -y localinstall cloudera-cdh-5-0.x86_64.rpm
+RUN yum install pig
+ENV HADOOP_MAPRED_HOME /usr/lib/hadoop-mapreduce
 
 
 RUN pip install --upgrade pip
