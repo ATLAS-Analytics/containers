@@ -2,4 +2,6 @@
 for all containerized ATLAS analytics services.  
 
 ## to do
-hdfs 
+*  logstash?
+*  test xAOD
+*  add FTS 

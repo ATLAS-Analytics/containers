@@ -7,4 +7,4 @@ echo "========= all set up. ============"
 
 cd xAOD-analytics/import
 ls
-"$@"
+run_container.sh
