@@ -72,7 +72,7 @@ RUN yum install -y pig \
 
 ENV HADOOP_MAPRED_HOME /usr/lib/hadoop-mapreduce
 
-COPY core-site.xml hdfs-site.xml mapred-site.xml yarn-site.xml /etc/hadoop/conf
+COPY core-site.xml hdfs-site.xml mapred-site.xml yarn-site.xml /etc/hadoop/conf/
 
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir \
