@@ -72,7 +72,7 @@ RUN yum install -y pig \
 
 ENV HADOOP_MAPRED_HOME /usr/lib/hadoop-mapreduce
 
-COPY core-site.xml hdfs-site.xml mapred-site.xml yarn-site.xml /etc/hadoop/conf/
+COPY configs/core-site.xml configs/hdfs-site.xml configs/mapred-site.xml configs/yarn-site.xml /etc/hadoop/conf/
 
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir \
@@ -97,10 +97,12 @@ RUN pip3.6 install --no-cache-dir \
     elasticsearch \
     cx_Oracle
 
-COPY krb5.conf /etc/krb5.conf
+COPY configs/krb5.conf /etc/krb5.conf
 
 COPY run.sh run.sh
 RUN chmod 755 run.sh
+
+COPY xAOD/run.sh xAOD/
 
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
