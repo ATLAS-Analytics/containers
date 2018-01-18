@@ -67,7 +67,7 @@ RUN rm elasticsearch-hadoop-6.1.1.zip
 RUN wget http://archive.cloudera.com/cdh5/one-click-install/redhat/7/x86_64/cloudera-cdh-5-0.x86_64.rpm
 #RUN rpm -ivh cloudera-cdh-5-0.x86_64.rpm
 RUN yum install -y localinstall cloudera-cdh-5-0.x86_64.rpm
-RUN yum install pig
+RUN yum install -y pig
 ENV HADOOP_MAPRED_HOME /usr/lib/hadoop-mapreduce
 
 
