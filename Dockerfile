@@ -102,8 +102,6 @@ COPY configs/krb5.conf /etc/krb5.conf
 COPY run.sh run.sh
 RUN chmod 755 run.sh
 
-COPY xAOD/run.sh xAOD/
-
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
 
@@ -111,6 +109,8 @@ RUN useradd -ms /bin/bash analyticssvc
 
 USER analyticssvc
 WORKDIR /home/analyticssvc
+
+COPY xAOD/run.sh xAOD/
 
 #execute service
 CMD ["/run.sh"]
