@@ -2,9 +2,9 @@
 
 echo "Setting up FTS collector"
 
-git clone https://github.com/ATLAS-Analytics/xAOD-analytics.git
+git clone git@github.com:ivukotic/FTS_indexer.git
 echo "========= all set up. ============"
 
-cd xAOD-analytics/container
+cd FTS_indexer
 ls
 run.sh
