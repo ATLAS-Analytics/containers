@@ -18,4 +18,9 @@ spec:
           secretKeyRef:
             name: mq-auth
             key: mq_pass
+      - name: MQ_HOST
+        valueFrom:
+          secretKeyRef:
+            name: mq-auth
+            key: mq_host
   restartPolicy: Never
