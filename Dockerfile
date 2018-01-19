@@ -81,6 +81,7 @@ RUN pip install --no-cache-dir \
     sklearn \
     elasticsearch \
     cx_Oracle \
+    requests \
     stomp.py
 
 # python3
@@ -94,6 +95,7 @@ RUN pip3.6 install --no-cache-dir \
     sklearn \
     elasticsearch \
     cx_Oracle \
+    requests \
     stomp.py
 
 COPY configs/krb5.conf /etc/krb5.conf

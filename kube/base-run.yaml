@@ -20,16 +20,10 @@ spec:
             name: mq-auth
             key: mq_pass
     volumeMounts:
-    - name: mq-volume
-      mountPath: "/tmp/mq"
-      readOnly: true
     - name: keytab-volume
       mountPath: "/tmp/keytab"
       readOnly: true
   volumes:
-  - name: mq-volume
-    secret:
-      secretName: mq-secret
   - name: keytab-volume
     secret:
       secretName: analytcssvc-keytab
