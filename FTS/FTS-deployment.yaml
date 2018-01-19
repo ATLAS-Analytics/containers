@@ -1,0 +1,31 @@
+apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
+kind: Deployment
+metadata:
+  name: fts_indexer-deployment
+  labels:
+    app: fts_indexer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fts_indexer
+  template:
+    metadata:
+      labels:
+        app: fts_indexer
+    spec:
+      containers:
+      - name: fts_indexer
+        image:  atlasanalyticsservice/containers:latest
+        args: ["/FTS/run.sh"]
+        env:
+          - name: MQ_USER
+            valueFrom:
+              secretKeyRef:
+                name: mq-auth
+                key: mq_user
+          - name: MQ_PASS
+            valueFrom:
+              secretKeyRef:
+                name: mq-auth
+                key: mq_pass

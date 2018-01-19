@@ -80,7 +80,8 @@ RUN pip install --no-cache-dir \
     scipy \
     sklearn \
     elasticsearch \
-    cx_Oracle
+    cx_Oracle \
+    stomp.py
 
 # python3
 RUN pip3.6 install --upgrade pip
@@ -92,7 +93,8 @@ RUN pip3.6 install --no-cache-dir \
     scipy \
     sklearn \
     elasticsearch \
-    cx_Oracle
+    cx_Oracle \
+    stomp.py
 
 COPY configs/krb5.conf /etc/krb5.conf
 
@@ -101,6 +103,9 @@ RUN chmod 755 run.sh
 
 COPY xAOD/run.sh xAOD/
 RUN chmod 755 xAOD/run.sh
+
+COPY FTS/run.sh FTS/
+RUN chmod 755 FTS/run.sh
 
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt

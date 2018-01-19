@@ -1,0 +1,29 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: fts-pod
+spec:
+  containers:
+  - name: analytics-svc-container
+    image: atlasanalyticsservice/containers:latest
+    args: ["/FTS/run.sh"]
+    env:
+      - name: MQ_USER
+        valueFrom:
+          secretKeyRef:
+            name: mq-auth
+            key: mq_user
+      - name: MQ_PASS
+        valueFrom:
+          secretKeyRef:
+            name: mq-auth
+            key: mq_pass
+    volumeMounts:
+    - name: mq-volume
+      mountPath: "/tmp/mq"
+      readOnly: true
+  volumes:
+  - name: mq-volume
+    secret:
+      secretName: mq-secret
+  restartPolicy: Never
