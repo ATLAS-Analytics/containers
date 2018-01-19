@@ -7,4 +7,4 @@ echo "========= all set up. ============"
 
 cd xAOD-analytics/container
 ls
-run.sh
+./run.sh

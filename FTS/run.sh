@@ -7,4 +7,4 @@ echo "========= all set up. ============"
 
 cd FTS_indexer
 ls
-run.sh
+./run.sh
