@@ -1,7 +1,7 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: xAOD-collector
+  name: xaod-collector
 spec:
   schedule: "31 15 * * *"
   jobTemplate:
