@@ -1,3 +1,4 @@
 secrets.yaml
 FTS-secret.yaml
+DP-secret.yaml
 *.keytab

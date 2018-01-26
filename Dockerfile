@@ -109,6 +109,9 @@ RUN chmod 755 xAOD/run.sh
 COPY FTS/run.sh FTS/
 RUN chmod 755 FTS/run.sh
 
+COPY DistributedProcessing/run.sh DistributedProcessing/
+RUN chmod 755 DistributedProcessing/run.sh
+
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
 

@@ -1,4 +1,4 @@
-apiVersion: apps/v1 # for versions before 1.8.0 use apps/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fts_indexer-deployment
@@ -22,10 +22,15 @@ spec:
           - name: MQ_USER
             valueFrom:
               secretKeyRef:
-                name: mq-auth
+                name: mq-auth-fts
                 key: mq_user
           - name: MQ_PASS
             valueFrom:
               secretKeyRef:
-                name: mq-auth
+                name: mq-auth-fts
                 key: mq_pass
+          - name: MQ_HOST
+            valueFrom:
+              secretKeyRef:
+                name: mq-auth-fts
+                key: mq_host

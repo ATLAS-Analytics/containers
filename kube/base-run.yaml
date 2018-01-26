@@ -12,17 +12,17 @@ spec:
       - name: MQ_USER
         valueFrom:
           secretKeyRef:
-            name: mq-auth
+            name: mq-auth-fts
             key: mq_user
       - name: MQ_PASS
         valueFrom:
           secretKeyRef:
-            name: mq-auth
+            name: mq-auth-fts
             key: mq_pass
       - name: MQ_HOST
         valueFrom:
           secretKeyRef:
-            name: mq-auth
+            name: mq-auth-fts
             key: mq_host
     volumeMounts:
     - name: keytab-volume
