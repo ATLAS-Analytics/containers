@@ -68,9 +68,8 @@ RUN yum install -y pig \
 
 #   sqoop1
 RUN wget http://mirror.cc.columbia.edu/pub/software/apache/sqoop/1.4.6/sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz
-RUN tar -xvf sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz
-RUN mkdir /usr/local/sqoop
-RUN mv sqoop-1.4.6.bin__hadoop-2.0.4-alpha/* /usr/local/sqoop
+RUN mkdir -p /usr/local/sqoop
+RUN tar -xvf sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz --directory /usr/local/sqoop --strip-components=1
 
 ENV HADOOP_MAPRED_HOME /usr/lib/hadoop-mapreduce
 ENV HADOOP_COMMON_HOME /usr/lib/hadoop
