@@ -73,7 +73,7 @@ RUN mkdir /usr/local/sqoop
 RUN mv sqoop-1.4.6.bin__hadoop-2.0.4-alpha/* /usr/local/sqoop
 
 ENV HADOOP_MAPRED_HOME /usr/lib/hadoop-mapreduce
-ENV HADOOP_COMMON_HOME=/usr/lib/hadoop
+ENV HADOOP_COMMON_HOME /usr/lib/hadoop
 
 RUN rm sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz \
     elasticsearch-hadoop-6.1.1.zip
