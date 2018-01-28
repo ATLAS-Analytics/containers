@@ -65,10 +65,16 @@ RUN wget http://archive.cloudera.com/cdh5/one-click-install/redhat/7/x86_64/clou
 RUN yum install -y localinstall cloudera-cdh-5-0.x86_64.rpm
 RUN yum install -y pig \
     hbase \
-    flume-ng \
-    sqoop2-client
+    flume-ng 
+#   sqoop2-client
 
 ENV HADOOP_MAPRED_HOME /usr/lib/hadoop-mapreduce
+
+RUN wget http://mirror.cc.columbia.edu/pub/software/apache/sqoop/1.4.6/sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz
+RUN tar -xvf sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz
+RUN mkdir /usr/local/sqoop
+RUN mv sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz /usr/local/sqoop
+
 
 COPY configs/core-site.xml configs/hdfs-site.xml configs/mapred-site.xml configs/yarn-site.xml /etc/hadoop/conf/
 
