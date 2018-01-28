@@ -58,7 +58,6 @@ ENV JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.161-2.6.12.0.el7_4.x86_64/jr
 # # es-hadoop - for all the modules (pig, mr, spark)
 RUN curl -LO http://download.elastic.co/hadoop/elasticsearch-hadoop-6.1.1.zip 
 RUN unzip elasticsearch-hadoop-6.1.1.zip 
-RUN rm elasticsearch-hadoop-6.1.1.zip
 
 # hdfs
 RUN wget http://archive.cloudera.com/cdh5/one-click-install/redhat/7/x86_64/cloudera-cdh-5-0.x86_64.rpm
@@ -73,8 +72,10 @@ ENV HADOOP_MAPRED_HOME /usr/lib/hadoop-mapreduce
 RUN wget http://mirror.cc.columbia.edu/pub/software/apache/sqoop/1.4.6/sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz
 RUN tar -xvf sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz
 RUN mkdir /usr/local/sqoop
-RUN mv sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz /usr/local/sqoop
+RUN mv sqoop-1.4.6.bin__hadoop-2.0.4-alpha /usr/local/sqoop
 
+RUN rm sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz \
+    elasticsearch-hadoop-6.1.1.zip
 
 COPY configs/core-site.xml configs/hdfs-site.xml configs/mapred-site.xml configs/yarn-site.xml /etc/hadoop/conf/
 
