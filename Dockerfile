@@ -28,7 +28,8 @@ RUN yum install -y \
     mod_ssl \
     mod_wsgi \
     openssl-devel \
-    java-1.7.0-openjdk 
+    java-1.7.0-openjdk-devel \
+    java-1.8.0-openjdk-devel 
 
 #     build-essential \
 #     krb5-user \
