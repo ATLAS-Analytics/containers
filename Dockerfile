@@ -79,6 +79,9 @@ RUN rm sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz \
 
 COPY configs/core-site.xml configs/hdfs-site.xml configs/mapred-site.xml configs/yarn-site.xml /etc/hadoop/conf/
 
+COPY Unconfirmed.zip /usr/local/sqoop/lib/ojdbc6.jar
+RUN chmod 755 /usr/local/sqoop/lib/ojdbc6.jar
+
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir \
     h5py \
