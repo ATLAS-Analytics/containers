@@ -25,7 +25,7 @@ spec:
         command:
         - /heapster
         - --source=kubernetes:https://kubernetes.default
-        - --sink=elasticsearch:http://atlas-kibana.mwt2.org:9200
+        - --sink=elasticsearch:http://atlas-kibana.mwt2.org:9200?sniff=false
 ---
 apiVersion: v1
 kind: Service
