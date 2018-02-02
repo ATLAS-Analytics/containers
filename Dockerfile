@@ -68,14 +68,14 @@ RUN yum install -y pig \
     flume-ng 
 
 #   sqoop1
-RUN wget http://mirror.cc.columbia.edu/pub/software/apache/sqoop/1.4.6/sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz
+RUN wget http://mirror.cc.columbia.edu/pub/software/apache/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
 RUN mkdir -p /usr/local/sqoop
-RUN tar -xvf sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz --directory /usr/local/sqoop --strip-components=1
+RUN tar -xvf sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz --directory /usr/local/sqoop --strip-components=1
 
 ENV HADOOP_MAPRED_HOME /usr/lib/hadoop-mapreduce
 ENV HADOOP_COMMON_HOME /usr/lib/hadoop
 
-RUN rm sqoop-1.4.6.bin__hadoop-2.0.4-alpha.tar.gz \
+RUN rm sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz \
     elasticsearch-hadoop-6.1.1.zip
 
 COPY configs/core-site.xml configs/hdfs-site.xml configs/mapred-site.xml configs/yarn-site.xml /etc/hadoop/conf/
@@ -123,6 +123,12 @@ RUN chmod 755 FTS/run.sh
 
 COPY DistributedProcessing/run.sh DistributedProcessing/
 RUN chmod 755 DistributedProcessing/run.sh
+
+COPY DistributedProcessing/run_tasks.sh DistributedProcessing/
+RUN chmod 755 DistributedProcessing/run_tasks.sh
+
+COPY DistributedProcessing/run_tasks_deft.sh DistributedProcessing/
+RUN chmod 755 DistributedProcessing/run_tasks_deft.sh
 
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
