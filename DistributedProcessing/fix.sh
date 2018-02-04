@@ -8,6 +8,9 @@ kinit analyticssvc@CERN.CH -k -t /tmp/keytab/analyticssvc.keytab
 
 echo "========= all set up. ============"
 
-cd DistributedProcessing/container/Tasks/Enrich/DEFT/
+cd DistributedProcessing/container/$1/
 ls
-./run.sh
+echo "========== fixing $1 =========="
+./fix.sh $2
+
+echo "All DONE."

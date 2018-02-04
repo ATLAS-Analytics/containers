@@ -12,7 +12,7 @@ spec:
           - name: analytics-svc-container
             image: atlasanalyticsservice/containers:latest
             command: ["/run.sh"]
-            args: ["/DistributedProcessing/run_tasks_deft.sh"]
+            args: ["/DistributedProcessing/run.sh","Tasks/Enrich/DEFT/"]
             env:
             - name: JOB_ORACLE_USER
               valueFrom:
