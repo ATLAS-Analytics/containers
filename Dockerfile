@@ -124,11 +124,9 @@ RUN chmod 755 FTS/run.sh
 COPY DistributedProcessing/run.sh DistributedProcessing/
 RUN chmod 755 DistributedProcessing/run.sh
 
-COPY DistributedProcessing/run_tasks.sh DistributedProcessing/
-RUN chmod 755 DistributedProcessing/run_tasks.sh
+COPY DistributedProcessing/run.sh DistributedProcessing/
+RUN chmod 755 DistributedProcessing/fix.sh
 
-COPY DistributedProcessing/run_tasks_deft.sh DistributedProcessing/
-RUN chmod 755 DistributedProcessing/run_tasks_deft.sh
 
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
