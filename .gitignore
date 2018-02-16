@@ -1,4 +1,5 @@
 secrets.yaml
 FTS-secret.yaml
 DP-secret.yaml
+BOINC-secret.yaml
 *.keytab

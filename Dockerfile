@@ -124,8 +124,8 @@ RUN chmod 755 FTS/run.sh
 COPY DistributedProcessing/run.sh DistributedProcessing/
 RUN chmod 755 DistributedProcessing/run.sh
 
-COPY DistributedProcessing/fix.sh DistributedProcessing/
-RUN chmod 755 DistributedProcessing/fix.sh
+COPY BOINC/run.sh BOINC/
+RUN chmod 755 BOINC/run.sh
 
 
 # build info
