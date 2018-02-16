@@ -137,6 +137,8 @@ RUN chmod 755 DistributedProcessing/run.sh
 
 COPY BOINC/run.sh BOINC/
 RUN chmod 755 BOINC/run.sh
+COPY BOINC/run-dev.sh BOINC/
+RUN chmod 755 BOINC/run-dev.sh
 
 
 # build info
