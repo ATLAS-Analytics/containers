@@ -29,7 +29,8 @@ RUN yum install -y \
     mod_wsgi \
     openssl-devel \
     java-1.7.0-openjdk-devel \
-    java-1.8.0-openjdk-devel 
+    java-1.8.0-openjdk-devel \
+    mysql-connector-java
 
 #     build-essential \
 #     krb5-user \
@@ -72,16 +73,25 @@ RUN wget http://mirror.cc.columbia.edu/pub/software/apache/sqoop/1.4.7/sqoop-1.4
 RUN mkdir -p /usr/local/sqoop
 RUN tar -xvf sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz --directory /usr/local/sqoop --strip-components=1
 
+# mysql 
+# RUN wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.45.tar.gz
+# RUN mkdir -p /usr/local/mysql
+# RUN tar -xvf mysql-connector-java-5.1.45.tar.gz --directory /usr/local/mysql --strip-components=1
+
 ENV HADOOP_MAPRED_HOME /usr/lib/hadoop-mapreduce
 ENV HADOOP_COMMON_HOME /usr/lib/hadoop
 
 RUN rm sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz \
     elasticsearch-hadoop-6.1.1.zip
+    # mysql-connector-java-5.1.45.tar.gz
 
 COPY configs/core-site.xml configs/hdfs-site.xml configs/mapred-site.xml configs/yarn-site.xml /etc/hadoop/conf/
 
 COPY Unconfirmed.zip /usr/local/sqoop/lib/ojdbc6.jar
 RUN chmod 755 /usr/local/sqoop/lib/ojdbc6.jar
+
+
+
 
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir \
