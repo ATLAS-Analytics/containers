@@ -140,6 +140,9 @@ RUN chmod 755 BOINC/run.sh
 COPY BOINC/run-dev.sh BOINC/
 RUN chmod 755 BOINC/run-dev.sh
 
+COPY DDM/run.sh DDM/
+RUN chmod 755 DDM/run.sh
+
 
 # build info
 RUN echo "Timestamp:" `date --utc` | tee /image-build-info.txt
