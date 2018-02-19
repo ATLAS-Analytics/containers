@@ -8,7 +8,7 @@ kinit analyticssvc@CERN.CH -k -t /tmp/keytab/analyticssvc.keytab
 
 echo "========= all set up. ============"
 
-cd DDM/import/
+cd DDMaccounting/import/
 ls
 echo "========== executing =========="
 ./run.sh
