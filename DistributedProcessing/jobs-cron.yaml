@@ -4,6 +4,7 @@ metadata:
   name: jobs-collector
 spec:
   schedule: "0 */1 * * *"
+  suspend: false
   jobTemplate:
     spec:
       template:
