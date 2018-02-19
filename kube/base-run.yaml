@@ -8,7 +8,37 @@ spec:
     image: atlasanalyticsservice/containers:latest
     command: ["sleep"]
     args: ["36500000"]
-    env:
+    env:    
+      - name: BOINC_USER
+        valueFrom:
+          secretKeyRef:
+            name: boinc-secret
+            key: boinc_user
+      - name: BOINC_PASS
+        valueFrom:
+          secretKeyRef:
+            name: boinc-secret
+            key: boinc_pass
+      - name: BOINC_CONNECTION_STRING
+        valueFrom:
+          secretKeyRef:
+            name: boinc-secret
+            key: boinc_connection_string
+      - name: BOINC_DEV_USER
+        valueFrom:
+          secretKeyRef:
+            name: boinc-secret
+            key: boinc_dev_user
+      - name: BOINC_DEV_PASS
+        valueFrom:
+          secretKeyRef:
+            name: boinc-secret
+            key: boinc_dev_pass
+      - name: BOINC_DEV_CONNECTION_STRING
+        valueFrom:
+          secretKeyRef:
+            name: boinc-secret
+            key: boinc_dev_connection_string
       - name: MQ_USER
         valueFrom:
           secretKeyRef:

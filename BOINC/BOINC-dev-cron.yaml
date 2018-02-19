@@ -4,6 +4,7 @@ metadata:
   name: boinc-dev-collector
 spec:
   schedule: "33 */6 * * *"
+  suspend: true
   jobTemplate:
     spec:
       template:
