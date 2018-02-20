@@ -69,6 +69,11 @@ spec:
           secretKeyRef:
             name: oracle-secret
             key: job_oracle_connection_string
+      - name: JOB_ORACLE_ADG_CONNECTION_STRING
+        valueFrom:
+          secretKeyRef:
+            name: oracle-secret
+            key: job_oracle_adg_connection_string
     volumeMounts:
     - name: keytab-volume
       mountPath: "/tmp/keytab"
