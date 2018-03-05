@@ -3,3 +3,4 @@ FTS-secret.yaml
 ORACLE-secret.yaml
 BOINC-secret.yaml
 *.keytab
+.kube

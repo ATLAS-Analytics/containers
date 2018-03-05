@@ -15,12 +15,12 @@ spec:
     metadata:
       labels:
         task: monitoring
-        k8s-app: heapster
+        name: heapster
     spec:
       serviceAccountName: heapster
       containers:
       - name: heapster
-        image: k8s.gcr.io/heapster-amd64:v1.5.1
+        image: k8s.gcr.io/heapster-amd64:v1.4.2
         imagePullPolicy: IfNotPresent
         command:
         - /heapster
@@ -32,7 +32,7 @@ kind: Service
 metadata:
   labels:
     task: monitoring
-    kubernetes.io/cluster-service: 'true'
+    # kubernetes.io/cluster-service: 'true'
     kubernetes.io/name: Heapster
   name: heapster
   namespace: kube-system
@@ -41,4 +41,4 @@ spec:
   - port: 80
     targetPort: 8082
   selector:
-    k8s-app: heapster
+    name: heapster
