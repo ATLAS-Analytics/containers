@@ -30,7 +30,7 @@ RUN yum install -y \
     openssl-devel \
     java-1.7.0-openjdk-devel \
     java-1.8.0-openjdk-devel 
-    
+
 #     mysql-connector-java
 #     build-essential \
 #     krb5-user \
@@ -49,7 +49,7 @@ RUN yum install -y \
 
 # pig
 
-ENV JAVA_HOME /usr/lib/jvm/java-1.7.0-openjdk-1.7.0.161-2.6.12.0.el7_4.x86_64/jre
+ENV JAVA_HOME /etc/alternatives/java_sdk_1.7.0_openjdk/jre/
 
 # ENV PIG_VERSION 0.17.0
 # RUN curl -LO http://apache.cs.utah.edu/pig/pig-$PIG_VERSION/pig-$PIG_VERSION.tar.gz
