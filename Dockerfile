@@ -58,8 +58,8 @@ ENV JAVA_HOME /etc/alternatives/java_sdk_1.7.0_openjdk/jre/
 # ENV PATH $PATH:/pig-$PIG_VERSION/bin
 
 # # es-hadoop - for all the modules (pig, mr, spark)
-RUN curl -LO http://download.elastic.co/hadoop/elasticsearch-hadoop-6.1.1.zip 
-RUN unzip elasticsearch-hadoop-6.1.1.zip 
+RUN curl -LO https://artifacts.elastic.co/downloads/elasticsearch-hadoop/elasticsearch-hadoop-6.2.2.zip
+RUN unzip elasticsearch-hadoop-6.2.2.zip 
 
 # hdfs
 RUN wget http://archive.cloudera.com/cdh5/one-click-install/redhat/7/x86_64/cloudera-cdh-5-0.x86_64.rpm
@@ -83,7 +83,7 @@ ENV HADOOP_MAPRED_HOME /usr/lib/hadoop-mapreduce
 ENV HADOOP_COMMON_HOME /usr/lib/hadoop
 
 RUN rm sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz \
-    elasticsearch-hadoop-6.1.1.zip \
+    elasticsearch-hadoop-6.2.2.zip \
     mysql-connector-java-5.1.45.tar.gz
 
 COPY configs/core-site.xml configs/hdfs-site.xml configs/mapred-site.xml configs/yarn-site.xml /etc/hadoop/conf/
