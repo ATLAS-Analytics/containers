@@ -43,9 +43,6 @@ RUN yum install -y \
 #   openjdk-8-jdk \
 #   openjdk-8-jre-headless \
 
-# RUN pip install --upgrade pip && \
-#     pip3 install --upgrade pip
-
 
 # pig
 
@@ -58,8 +55,13 @@ ENV JAVA_HOME /etc/alternatives/java_sdk_1.7.0_openjdk/jre/
 # ENV PATH $PATH:/pig-$PIG_VERSION/bin
 
 # # es-hadoop - for all the modules (pig, mr, spark)
-RUN curl -LO https://artifacts.elastic.co/downloads/elasticsearch-hadoop/elasticsearch-hadoop-6.2.2.zip
-RUN unzip elasticsearch-hadoop-6.2.2.zip 
+ENV EH_VERSION 6.2.2
+RUN curl -LO https://artifacts.elastic.co/downloads/elasticsearch-hadoop/elasticsearch-hadoop-$EH_VERSION.zip
+RUN unzip elasticsearch-hadoop-$EH_VERSION.zip 
+RUN mkdir /elasticsearch-hadoop && \
+    ln -s /elasticsearch-hadoop-$EH_VERSION/dist/elasticsearch-hadoop-$EH_VERSION.jar /elasticsearch-hadoop/elasticsearch-hadoop.jar && \
+    ln -s /elasticsearch-hadoop-$EH_VERSION/dist/elasticsearch-hadoop-pig-$EH_VERSION.jar /elasticsearch-hadoop/elasticsearch-hadoop-pig.jar && \
+    ln -s /elasticsearch-hadoop-$EH_VERSION/dist/elasticsearch-spark-20_2.11-$EH_VERSION.jar /elasticsearch-hadoop/elasticsearch-spark.jar
 
 # hdfs
 RUN wget http://archive.cloudera.com/cdh5/one-click-install/redhat/7/x86_64/cloudera-cdh-5-0.x86_64.rpm
@@ -83,16 +85,13 @@ ENV HADOOP_MAPRED_HOME /usr/lib/hadoop-mapreduce
 ENV HADOOP_COMMON_HOME /usr/lib/hadoop
 
 RUN rm sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz \
-    elasticsearch-hadoop-6.2.2.zip \
+    elasticsearch-hadoop-$EH_VERSION.zip \
     mysql-connector-java-5.1.45.tar.gz
 
 COPY configs/core-site.xml configs/hdfs-site.xml configs/mapred-site.xml configs/yarn-site.xml /etc/hadoop/conf/
 
 COPY Unconfirmed.zip /usr/local/sqoop/lib/ojdbc6.jar
 RUN chmod 755 /usr/local/sqoop/lib/ojdbc6.jar
-
-
-
 
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir \
