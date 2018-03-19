@@ -10,7 +10,13 @@ echo "========= all set up. ============"
 
 cd DDMaccounting/import/
 ls
+
 echo "========== executing =========="
 ./run.sh
+
+rc=$?; if [[ $rc != 0 ]]; then 
+    echo "problem with the job. Exiting."
+    exit $rc; 
+fi
 
 echo "All DONE."
