@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: fts_indexer-deployment
+  name: fts-indexer-deployment
   labels:
-    app: fts_indexer
+    app: fts-indexer
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: fts_indexer
+      app: fts-indexer
   template:
     metadata:
       labels:
-        app: fts_indexer
+        app: fts-indexer
     spec:
       containers:
-      - name: fts_indexer
+      - name: fts-indexer
         image:  atlasanalyticsservice/containers:latest
         args: ["/FTS/run.sh"]
         env:
