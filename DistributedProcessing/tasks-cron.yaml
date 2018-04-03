@@ -4,6 +4,8 @@ metadata:
   name: tasks-collector
 spec:
   schedule: "15 */1 * * *"
+  suspend: false
+  concurrencyPolicy: Forbid
   jobTemplate:
     spec:
       template:

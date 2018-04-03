@@ -5,6 +5,7 @@ metadata:
 spec:
   schedule: "33 */6 * * *"
   suspend: true
+  concurrencyPolicy: Forbid
   jobTemplate:
     spec:
       template:
