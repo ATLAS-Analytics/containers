@@ -11,7 +11,8 @@ echo "========= all set up. ============"
 cd DDMaccounting/import/
 ls
 
-echo "========== executing =========="
+echo "========== executing $1 =========="
+cd $1
 ./run.sh
 
 rc=$?; if [[ $rc != 0 ]]; then 
