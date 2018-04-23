@@ -29,7 +29,8 @@ RUN yum install -y \
     mod_wsgi \
     openssl-devel \
     java-1.7.0-openjdk-devel \
-    java-1.8.0-openjdk-devel 
+    java-1.8.0-openjdk-devel \
+    java-1.9.0-openjdk-devel
 
 #     mysql-connector-java
 #     build-essential \
