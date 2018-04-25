@@ -29,8 +29,7 @@ RUN yum install -y \
     mod_wsgi \
     openssl-devel \
     java-1.7.0-openjdk-devel \
-    java-1.8.0-openjdk-devel \
-    java-1.9.0-openjdk-devel
+    java-1.8.0-openjdk-devel 
 
 #     mysql-connector-java
 #     build-essential \
@@ -46,6 +45,9 @@ RUN yum install -y \
 
 
 # pig
+
+#RUN curl -LO https://download.java.net/openjdk/jdk9/ri/openjdk-9+181_linux-x64_ri.zip
+#RUN unzip openjdk-9+181_linux-x64_ri.zip
 
 ENV JAVA_HOME /etc/alternatives/java_sdk_1.7.0_openjdk/jre/
 
@@ -145,6 +147,8 @@ COPY BOINC/run.sh BOINC/
 RUN chmod 755 BOINC/run.sh
 COPY BOINC/run-dev.sh BOINC/
 RUN chmod 755 BOINC/run-dev.sh
+COPY BOINC/run-cms-dev.sh BOINC/
+RUN chmod 755 BOINC/run-cms-dev.sh
 
 COPY DDM/run.sh DDM/
 RUN chmod 755 DDM/run.sh
