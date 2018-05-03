@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: uc_logstash
+spec:
+  containers:
+  - name: uc_logstash
+    image: atlasanalyticsservice/uc_logstash:latest
+    command: ["sleep"]
+    args: ["infinity"]
+
+    ports:
+      - containerPort: 8080
+      - containerPort: 61613
+      - containerPort: 9951
+
+  restartPolicy: Never
