@@ -12,6 +12,7 @@ RUN mkdir /usr/share/logstash/templates
 RUN curl -O "http://geolite.maxmind.com/download/geoip/database/GeoLite2-City.mmdb.gz"
 RUN gunzip GeoLite2-City.mmdb.gz
 
+RUN bin/logstash-plugin install logstash-input-stomp
 
 COPY logstash.yml /usr/share/logstash/config/
 COPY pipelines.yml /usr/share/logstash/config/
