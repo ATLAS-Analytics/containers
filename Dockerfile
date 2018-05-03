@@ -80,7 +80,7 @@ RUN wget http://central.maven.org/maven2/com/twitter/elephantbird/elephant-bird-
 RUN wget http://central.maven.org/maven2/com/twitter/elephantbird/elephant-bird-pig/$EB_VERSION/elephant-bird-pig-$EB_VERSION.jar -O /usr/lib/pig/lib/elephant-bird-pig.jar
 
 #   sqoop1
-RUN wget http://mirror.cc.columbia.edu/pub/software/apache/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
+RUN wget http://mirrors.sonic.net/apache/sqoop/1.4.7/sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz
 RUN mkdir -p /usr/local/sqoop
 RUN tar -xvf sqoop-1.4.7.bin__hadoop-2.6.0.tar.gz --directory /usr/local/sqoop --strip-components=1
 

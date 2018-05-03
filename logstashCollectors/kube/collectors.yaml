@@ -14,4 +14,4 @@ spec:
       - containerPort: 61613
       - containerPort: 9951
 
-  restartPolicy: Never
+  restartPolicy: Always
