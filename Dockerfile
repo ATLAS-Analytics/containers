@@ -17,7 +17,6 @@ RUN yum install -y \
     unzip \
     vim \
     libaio \
-    oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm \
     python-pip \
     python-devel \
     python36u \
@@ -101,6 +100,9 @@ COPY configs/core-site.xml configs/hdfs-site.xml configs/mapred-site.xml configs
 
 COPY Unconfirmed.zip /usr/local/sqoop/lib/ojdbc6.jar
 RUN chmod 755 /usr/local/sqoop/lib/ojdbc6.jar
+
+COPY Unconfirmed.rpm .
+RUN yum install -y Unconfirmed.rpm
 
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir \
