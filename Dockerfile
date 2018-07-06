@@ -17,6 +17,7 @@ RUN yum install -y \
     unzip \
     vim \
     libaio \
+    oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm \
     python-pip \
     python-devel \
     python36u \
@@ -42,7 +43,6 @@ RUN yum install -y \
 
 #   openjdk-8-jdk \
 #   openjdk-8-jre-headless \
-
 
 # pig
 
