@@ -2,6 +2,7 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: xaod-collector
+  namespace: aaas
 spec:
   schedule: "31 15 * * *"
   suspend: false

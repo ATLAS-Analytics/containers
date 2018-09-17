@@ -2,6 +2,7 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: jobs-status-enrichment
+  namespace: aaas
 spec:
   schedule: "20 1 * * *"
   suspend: false

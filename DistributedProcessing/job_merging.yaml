@@ -2,6 +2,7 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: jo-merging
+  namespace: aaas
 spec:
   schedule: "25 2 * * *"
   suspend: false
