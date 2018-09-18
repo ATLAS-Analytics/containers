@@ -2,7 +2,6 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: jobs-collector
-  namespace: aaas
 spec:
   schedule: "0 */1 * * *"
   suspend: false

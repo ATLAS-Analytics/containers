@@ -2,7 +2,6 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: tasks-deft-collector
-  namespace: aaas
 spec:
   schedule: "20 */1 * * *"
   suspend: false

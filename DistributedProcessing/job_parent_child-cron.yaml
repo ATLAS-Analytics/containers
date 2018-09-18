@@ -2,7 +2,6 @@ apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
   name: jo-parent-child-enrichment
-  namespace: aaas
 spec:
   schedule: "20 2 * * *"
   suspend: false
