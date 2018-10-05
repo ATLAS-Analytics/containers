@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fts-indexer-deployment
-  namespace: aaas
+  # namespace: aaas  - only if running at UC.
   labels:
     app: fts-indexer
 spec:
