@@ -44,10 +44,15 @@ RUN yum install -y \
 #   openjdk-8-jre-headless \
 
 
-RUN wget https://yum.oracle.com/RPM-GPG-KEY-oracle-ol7 -O /etc/pki/rpm-gpg/RPM-GPG-KEY-oracle && \
-    curl -o /etc/yum.repos.d/public-yum-ol7.repo https://yum.oracle.com/public-yum-ol7.repo && \
-    yum-config-manager --enable ol7_oracle_instantclient && \
-    yum -y install oracle-instantclient18.3-basic oracle-instantclient18.3-devel oracle-instantclient18.3-sqlplus && \
+# RUN wget https://yum.oracle.com/RPM-GPG-KEY-oracle-ol7 -O /etc/pki/rpm-gpg/RPM-GPG-KEY-oracle && \
+#     curl -o /etc/yum.repos.d/public-yum-ol7.repo https://yum.oracle.com/public-yum-ol7.repo && \
+#     yum-config-manager --enable ol7_oracle_instantclient && \
+#     yum -y install oracle-instantclient18.3-basic oracle-instantclient18.3-devel oracle-instantclient18.3-sqlplus && \
+#     echo /usr/lib/oracle/18.3/client64/lib > /etc/ld.so.conf.d/oracle-instantclient18.3.conf && \
+#     ldconfig
+
+RUN wget http://download.oracle.com/otn/linux/instantclient/183000/oracle-instantclient18.3-basic-18.3.0.0.0-1.x86_64.rpm
+RUN yum -y localinstall oracle-instantclient18.3-basic-18.3.0.0.0-1.x86_64.rpm && \
     echo /usr/lib/oracle/18.3/client64/lib > /etc/ld.so.conf.d/oracle-instantclient18.3.conf && \
     ldconfig
 
@@ -112,8 +117,8 @@ COPY configs/core-site.xml configs/hdfs-site.xml configs/mapred-site.xml configs
 COPY Unconfirmed.zip /usr/local/sqoop/lib/ojdbc6.jar
 RUN chmod 755 /usr/local/sqoop/lib/ojdbc6.jar
 
-COPY Unconfirmed.rpm .
-RUN yum install -y Unconfirmed.rpm
+# COPY Unconfirmed.rpm .
+# RUN yum install -y Unconfirmed.rpm
 
 RUN pip install --upgrade pip
 RUN pip install --no-cache-dir \
