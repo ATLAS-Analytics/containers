@@ -43,6 +43,16 @@ RUN yum install -y \
 #   openjdk-8-jdk \
 #   openjdk-8-jre-headless \
 
+
+RUN curl -o /etc/yum.repos.d/public-yum-ol7.repo https://yum.oracle.com/public-yum-ol7.repo && \
+    yum-config-manager --enable ol7_oracle_instantclient && \
+    yum -y install oracle-instantclient18.3-basic oracle-instantclient18.3-devel oracle-instantclient18.3-sqlplus && \
+    echo /usr/lib/oracle/18.3/client64/lib > /etc/ld.so.conf.d/oracle-instantclient18.3.conf && \
+    ldconfig
+
+ENV PATH=$PATH:/usr/lib/oracle/18.3/client64/bin
+
+
 # pig
 
 #RUN curl -LO https://download.java.net/openjdk/jdk9/ri/openjdk-9+181_linux-x64_ri.zip
@@ -130,6 +140,8 @@ RUN pip3.6 install --no-cache-dir \
     cx_Oracle \
     requests \
     stomp.py
+
+RUN rm -rf /var/cache/yum
 
 COPY configs/krb5.conf /etc/krb5.conf
 
