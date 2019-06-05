@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: fts-indexer-deployment
-  # namespace: aaas  - only if running at UC.
+  namespace: aaas
   labels:
     app: fts-indexer
 spec:
@@ -35,3 +35,18 @@ spec:
               secretKeyRef:
                 name: mq-auth-fts
                 key: mq_host
+          - name: ES_USER
+            valueFrom:
+              secretKeyRef:
+                name: es-auth-fts
+                key: es_user
+          - name: ES_PASS
+            valueFrom:
+              secretKeyRef:
+                name: es-auth-fts
+                key: es_pass
+          - name: ES_HOST
+            valueFrom:
+              secretKeyRef:
+                name: es-auth-fts
+                key: es_host

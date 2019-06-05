@@ -1,5 +1,6 @@
 secrets.yaml
 FTS-secret.yaml
+ES-secret.yaml
 ORACLE-secret.yaml
 BOINC-secret.yaml
 *.keytab
