@@ -74,6 +74,21 @@ spec:
           secretKeyRef:
             name: oracle-secret
             key: job_oracle_adg_connection_string
+      - name: ES_USER
+        valueFrom:
+          secretKeyRef:
+            name: es-auth-fts
+            key: es_user
+      - name: ES_PASS
+        valueFrom:
+          secretKeyRef:
+            name: es-auth-fts
+            key: es_pass
+      - name: ES_HOST
+        valueFrom:
+          secretKeyRef:
+            name: es-auth-fts
+            key: es_host
     volumeMounts:
     - name: keytab-volume
       mountPath: "/tmp/keytab"
