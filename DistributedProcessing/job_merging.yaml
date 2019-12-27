@@ -1,7 +1,7 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: jo-merging
+  name: job-merging
 spec:
   schedule: "25 2 * * *"
   suspend: false
