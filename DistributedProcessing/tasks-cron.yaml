@@ -46,12 +46,4 @@ spec:
                 secretKeyRef:
                   name: es-auth-fts
                   key: es_host
-            volumeMounts:
-            - name: keytab-volume
-              mountPath: "/tmp/keytab"
-              readOnly: true
-          volumes:
-          - name: keytab-volume
-            secret:
-              secretName: analytcssvc-keytab
           restartPolicy: Never
