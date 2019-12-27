@@ -1,5 +1,10 @@
 #!/bin/bash
 
+echo "DONT USE."
+echo "NEEDS valid kinit and correct ES address."
+echo "NOT PIG etc."
+exit 1
+
 echo "Setting up xAOD collector"
 git clone https://github.com/ATLAS-Analytics/xAOD-analytics.git
 
